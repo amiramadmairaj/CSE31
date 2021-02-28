@@ -1,0 +1,36 @@
+**TPS 4**
+average.c
+
+
+int MAIN(){
+
+PRINT 'Please Enter an Integer:'
+USERINPUT(integer);
+
+WHILE(integer != 0)
+    IF (integer > 0)
+        positive_sum = positive sum + integer
+        positive_count increment
+
+
+    IF(integer < 0)
+        negative_sum = negative sum + integer
+        negative_count increment
+
+END WHILE LOOP
+
+
+    ELSE IF (positive_sum >= 1)
+        PRINT 'This is the average of all the postive numbers'
+        average_positive = positive_sum/positive_count
+        PRINT (average_positive)
+
+
+    IF (negative_sum < 0)
+        PRINT 'This is the average of all the negative numbers'
+        average_negative = negative_sum/negative_count
+        PRINT (average_negative)
+
+
+
+return;

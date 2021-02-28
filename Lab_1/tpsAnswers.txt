@@ -1,0 +1,70 @@
+**TPS 1**
+
+1.Record your TPS partners’ names.
+Francis Alecz Deloso
+Hugo Castaneda
+
+2.Independently search the internet for 3 online tutorials on how to use Linux terminal.
+https://www.youtube.com/watch?v=IGmfU6QU5dI
+https://code.visualstudio.com/docs/editor/integrated-terminal
+https://www.howtogeek.com/140679/beginner-geek-how-to-start-using-the-linux-terminal/
+
+3.Share your tutorials with your TPS partners.
+Done.
+
+4.Bookmark your results in the browser of your computer.
+Done.
+
+**TPS 2**
+
+1. How can you open a terminal from your Linux computer?
+To open a terminal from your linux computer you must press [control] [alt] [t].
+
+a. Can you open more than 1 terminal at the same time?
+Yes, you can.
+
+b. Why do you think you want to open more than 1 terminal at the same time?
+You might want to open more than one terminal becuase you could be running multiple programs (multitasking)
+
+2. In the terminal, how can you tell what are contents inside the current directory (i.e., what is the
+command)?
+ls
+
+3. From your current directory, how can you navigate to Desktop directory?
+cd desktop
+
+4. While you are in Desktop, create a new directory called CSE31. How do you do this?
+mkdr CSE31
+
+**TPS 3**
+
+1. Independently find 2 online referenceson how to use GCC in a Linux terminal.
+https://www.geeksforgeeks.org/gcc-command-in-linux-with-examples/
+https://stackoverflow.com/questions/32337643/how-to-run-c-program-on-mac-os-x-using-terminal
+https://medium.com/@laura.derohan/compiling-c-files-with-gcc-step-by-step-8e78318052#:~:text=In%20order%20for%20our%20main,compiling%20process%20after%20each%20step.
+
+2. Share what you have found with your partners and save your results in the bookmark of your browser.
+You will refer to these references to answer the following questions.
+Done.
+
+3. What command do you type in the terminal to compile your main.c?
+To compile I use the command gcc main.c 
+
+4. How do you know if your program has compiled successfully?
+No errors are shown in the terminal
+
+5. What does the –c flag do in gcc?
+Compile or assemble the source files. 
+
+6. What does the –g flag do in gcc?
+Default debug information
+
+7. How do you change the executable name from main to cse lab1?
+-o flag
+
+8. What happens when you compile your code by typing gcc main.c only?
+a.out
+
+9. Now, let us run the program you have just compiled. What command do you use?
+./programname
+
