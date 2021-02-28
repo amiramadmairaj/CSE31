@@ -1,0 +1,24 @@
+**Assignment 1**
+1. What line caused the segmentation fault?
+Line 18
+
+2. How do you fix the line so it works properly?
+To fix the code I put the & opperator in front of variable input
+
+3. What is the bug here? 
+The variable (*sum) had to be passed as pointer, and in main the call to read_values must have the address of sums (&sum)
+
+4. How do you fix it?
+I added a * pointer all of the variables in the read values function.
+
+**Assignment 2**
+1. Run the program with the following input: “HELLO!” for str1 and “hello!” for str2. Is the output expected?
+Yes, it runs fine. 
+
+2. Do not stop the program, enter “HI!” for str1 and "hi!” for str2. Is the output expected? What is
+the bug here? Try to fix the program so it will print the output correctly.
+The progtam is not as expected, the bug here is is the program prints old memory and doesnt correctly allocate memory. The use of the \0 character alleviates this issues as it terminates the character stirng.
+
+3. Do not stop the program, enter “Hello! How are you?” for str1 and “I am fine,thank
+you!” for str2. Is the output expected? Why do you think this happens?
+I think it is having an issue becuase of the space after "Hello!" the program might trying to terminates the string prematurely which results in the error we see.

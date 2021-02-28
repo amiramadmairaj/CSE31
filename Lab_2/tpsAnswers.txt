@@ -1,0 +1,66 @@
+**TPS 1**
+
+1.Record your TPS partners’ names.
+Erick Vargas, Adrian Navarro, Ralphilou Tatoy
+
+2.Independently search the internet for 3 online tutorials on how to set up and use GDB (or LLDB) in your system. Share your tutorials with your TPS partners.
+https://code.visualstudio.com/docs/cpp/lldb-mi
+https://medium.com/gdplabs/build-and-debug-c-on-visual-studio-code-for-mac-77e05537105e
+https://www.youtube.com/watch?v=3BkEOvI36Ds
+
+4.Bookmark your results in the browser of your computer.
+Done.
+
+**TPS 2**
+
+1.How do you compile your punishment.c so that you can debug it using GDB? Try it with your code and setthe name of the executable to punish.
+"-g" flag or "gcc punishment.c -g -o punish"
+
+2.Once punishment.c is compiled, how do you load it in GDB? Try it with your program.
+"gbd punish"
+
+3.Once punish is loaded, how do you run it in GDB? Try to run your punish.
+"run" or "r"
+
+4.What are breakpoints? How do you set a breakpoint at a certain line of your program? Try to set a breakpoint in punishment.c where the forloop begins.
+Break points are a line in the code where you set a pause in the program, we make breakpoints to check everythinng in the program is functioning correctly.
+ "break[line you want to stop at]"
+
+5.Now run the program again. It should stop at the breakpoint you set in Q4. From here, how do you run the program line by line? Try to run the next 3 lines with your program.
+To run the program line by line after the break point type "n" or "next"
+
+6.While you are still running punishline by line, how can you see the value of a variable? Pick 3 variables in your program and display them in the terminal one by one.
+To see the alue of all variables: "info local" to see only one variable: p [variable name]
+
+
+7.Now that you are tired of running line by line,how do you let the program finish its run? Try to finish running your punish.
+"continue"
+
+8.How do you exit from GDB?
+q or quit ti exit
+
+**TPS 3**
+
+1.How many variables were declared in the first line of main()? How many of them are pointers (and what are they)?
+Two variables and two pointers (four total) the pointers are *px, *py
+
+2.What will be the values of x, y, and arr[0] if you run the program? Validate your answer by running the program. Why do you think it happens that way? You will need to insert printfstatements to display those values.
+The values of all variables will be garbage until you initlaize them, same for the array. This happends because all C allococates random raw memory with without cleaning it first.
+
+3.How do you prevent x, y, and the content of arrfrom having unexpected values? Try to fix them in the program.
+Initilize the variables (to 0).
+
+4.The moment you have declared a variable, the program will allocate a memory location for it. Each memory location has an address. Now insert printfstatements to display the addresses of x and y.
+&x and &y to get get adress (Done).
+
+5.Now insert code so that px points to x and py points to y. Print out the values and addresse of those pointers using only the pointer variables (yes, pointers have addresses too!).You should see that the value of px is equal to the address of x, and the same is true for py and y.
+make px= &x and py= &y and print as we did before
+
+6.As we have learned in lectures, an array name can be used as a pointer to access the content of the array. Write a loop to output the contents of arrby using arras a pointer (do notuse [] in your loop).
+Done.
+
+7.Are array names really the same as pointers? Let us find out! An array name points to the first element of an array, so arrshould point to the address of arr[0]. Insert code to verify this.
+Yes, they are because when printing out the memory address of the array we get the same memory adress as the pointer's.
+
+8.Now print out the address of arr. Does the result make sense? Why?
+It makes sense because the address of arr[0] and arr both point to the same memory address because they are both are the front of the list. 
