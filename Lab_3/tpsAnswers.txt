@@ -1,0 +1,38 @@
+**TPS 1**
+
+1. Name the 3 pools for memory and what kind of variables will be stored in each pool.
+Stack, heap, and static
+
+2. Open mem.cwith your favorite text editor and discuss the following questions with your partner:
+a.How many variables are declared?
+Three variables
+
+b. How many of them are pointers? What type of data does each pointer point to?
+Two of them are pointers, one points to num, the other points to ptr, which points to num
+
+c. Which pool of memory are these variables stored in?
+num = static
+ptr = stack
+handle = stack
+
+d. Which pool of memory will the pointer ptr point to in line 12.
+It should point to the heap since malloc is being called.
+
+3. Using a piece of paper (or a drawing app), draw the 3 pools of memory and indicate the locations (in which pool?) of the variables in mem.c using boxes (like what we did in lecture). Label the boxes with variable names, their content, and their addresses. You will need to insert extra code to obtain the addresses of these variables.
+Done. (PDF PROVIDED IN SUBMISSION)
+
+4. In the same drawing, use arrows to connect each pointer to its destination.
+Done.
+
+**TPS 2**
+
+1. Open NodeStruct.c and discuss what this program does.
+This program creates two pointers and allocates space in the heap for NodeStruct, then assigns the two values using the pointers.
+
+2. Insert extra code to print out the value of head, addresses of head, iValue, fValue, and next pointed by head.
+Done.
+
+3. Based on the addresses of the members of Node structure, what do you observe about how structures are stored in memory? What is the relationship between the pointer (head) and its destination (the Node structure)?
+The addresses of the members in NodeStruct are all four bits apart, meaning that they are being stored one after the other in memory (since each memory address takes up 4 bits). 
+The relationship between the pointer head and its destination head is pointer to structure. In this problem head is pointing to node structure;
+By using pointer structure we can allocate memory of structure dynamically.
