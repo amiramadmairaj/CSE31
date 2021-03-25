@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-// Declarations of the two functions you will implement
-// Feel free to declare any helper functions
 void printPuzzle(char** arr, int n);
 void searchPuzzle(char** arr, int n, char** list, int listSize);
-void searchWord(int j, int k, int gridsize, char** arr, char** list, int listPos);
+int LeftToRight(char** arr, int n, char* word); 
+int RightToLeft(char** arr, int n, char* word);
+int TopToBottom(char** arr, int n, char* word);
+int BottomToTop(char** arr, int n, char* word);
+int TopleftToBotright(char** arr, int n, char* word);
+int BotleftToTopright(char** arr, int n, char* word);
+void lowerCase(char** arr, int wordSize, int arrSize, int row, int col, int type);
+char Cap_to_Low(char str);
 
 // Main function, DO NOT MODIFY (except line 52 if your output is not as expected -- see the comment there)!!!	
 int main(int argc, char **argv) {
@@ -77,80 +81,242 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+
+
+
+
+
+void searchPuzzle(char** arr, int n, char** list, int listSize){
+    // This function checks if arr contains words from list. If a word appears in arr, it will print out that word and then convert that word entry in arr into lower case.
+    // Your implementation here
+    int wordsfound = 0;
+    for(int i=0; i<listSize; i++){
+
+        if(LeftToRight(arr, n, list[i]) ||
+            TopToBottom(arr, n, list[i]) ||
+            BottomToTop(arr, n, list[i]) ||
+            TopleftToBotright(arr, n, list[i]) ||
+            BotleftToTopright(arr, n, list[i])){
+           printf("Word found: %s\n", list[i]);
+          wordsfound++;}
+      
+    }
+
+    }
+
+    int LeftToRight(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+       int i=0, j=0, index=0;
+       for(i=0; i<n; i++){
+           for(j=0; j<n-size; j++){
+           index=0;
+           while(index<size){
+                    if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+i)+index+j))){
+                   if(index == size-1){
+                       lowerCase(arr, size, n, i, j, 1);
+                       return 1;
+                   }
+               }else{
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+      
+       return 0;
+    }
+
+    int RightToLeft(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+      
+       int i=0, j=0, index=0;
+       for(i=0; i<n; i++){
+           for(j=n-1; j>=size-1; j--){
+           index=0;
+           while(index<size){
+                    if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+i)+j-index))){
+                   if(index == size-1){
+                       lowerCase(arr, size, n, i, j, 2);
+                       return 1;
+                   }
+               }
+               else
+               {
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+      
+       return 0;
+    }
+
+    int TopToBottom(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+      
+       int i=0, j=0, index=0;
+       for(i=0; i<n; i++){
+           for(j=0; j<n-size; j++){
+           index=0;
+           while(index<size){
+                   if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+index+j)+i))){
+                   if(index == size-1){
+                       lowerCase(arr, size, n, j, i, 3);
+                       return 1;
+                   }
+               }
+               else
+               {
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+      
+       return 0;
+    }
+    int BottomToTop(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+       int i=0, j=0, index=0;
+       for(i=0; i<n; i++){
+           for(j=n-1; j>=size-1; j--){
+           index=0;
+           while(index<size){
+          if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+j-index)+i))){
+
+                   if(index == size-1){
+                       lowerCase(arr, size, n, j, i, 4);
+                       return 1;
+                   }
+               }
+               else
+               {
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+      
+       return 0;
+    }
+
+    int TopleftToBotright(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+       int i=0, j=0, index=0;
+       for(i=0; i<n; i++){
+           for(j=0; j<n; j++){
+           index=0;
+           while(index<size && (i+index<n) && (j+index<n)){
+              if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+i+index)+j+index))){
+                   if(index == size-1){
+                       lowerCase(arr, size, n, i, j, 5);
+                       return 1;
+                   }
+               }
+               else
+               {
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+      
+       return 0;
+    }
+
+    int BotleftToTopright(char** arr, int n, char* word){
+      
+       int size = strlen(word);
+       int i=0, j=0, index=0;
+       for(i=n-1; i>0; i--){
+           for(j=0;j<n;j++){
+           index=0;
+           while(index<size && (i-index>0) && (j+index<n)){
+              if(Cap_to_Low(*(word+index))==Cap_to_Low(*(*(arr+i-index)+j+index))){
+                   if(index == size-1){
+                       lowerCase(arr, size, n, i, j, 6);
+                       return 1;
+                   }
+               }
+               else
+               {
+                   break;
+               }
+               index++;
+           }
+           }
+       }
+       return 0;
+    }
+      
+
+  char Cap_to_Low(char str)
+{
+
+for(int j=0;j<=strlen(&str);j++){
+if(str>=65 && str<=90)
+str+=32;
+}
+return str;
+}
+
+    void lowerCase(char** arr, int wordSize, int arrSize, int row, int col, int type){
+      
+       int i,j;
+      
+       switch(type){
+          
+           case 1: //horizontal left to right
+               for(j=col; j<col+wordSize; j++){
+                   *(*(arr+row)+j)=Cap_to_Low(*(*(arr+row)+j));
+               }
+               break;
+           case 2:   //horizontal right to left
+               for(j=col; j>col-wordSize; j--){
+                   *(*(arr+row)+j)=Cap_to_Low(*(*(arr+row)+j));
+               }
+               break;
+           case 3:   //vertical top to bottom
+               for(j=row; j<row+wordSize; j++){
+                   *(*(arr+j)+col)=Cap_to_Low(*(*(arr+j)+col));
+               }
+               break;
+           case 4:   //vertical bottom to top
+               for(j=row; j>row-wordSize ; j--){
+                   *(*(arr+j)+col)=Cap_to_Low(*(*(arr+j)+col));
+               }
+               break;
+           case 5:   //diagnol topleft to bottomright
+               for(j=0;j<wordSize;j++)
+                   *(*(arr+row+j)+col+j) = Cap_to_Low(*(*(arr+row+j)+col+j));
+               break;
+           case 6:   //diagnol bottomleft to topright
+               for(j=0;j<wordSize;j++)
+                   *(*(arr+row-j)+col+j) = Cap_to_Low(*(*(arr+row-j)+col+j));
+               break;
+          
+       }
+    }
+
 void printPuzzle(char** arr, int n) {
 	// This function will print out the complete puzzle grid (arr). It must produce the output in the SAME format as the samples in the instructions.
 	// Your implementation here
+    //DONE
 for(int i = 0; i < n; i++){
-        printf("\n");
-        for(int j = 0; j < n; j++){
-            printf("%c ", *(*(arr+i)+j)); //arr[i]+[j]
-		}
+       printf("\n");
+       for(int j = 0; j < n; j++){
+           printf("%c ", *(*(arr+i)+j));
+        }
 }
-
-}
-
-void searchPuzzle(char** arr, int n, char** list, int listSize) {
-	// This function checks if arr contains words from list. If a word appears in arr, it will print out that word and then convert that word entry in arr into lower case.
-	// Your implementation here
-	for(int i = 0; i < listSize; i++){
-        for(int j = 0; j < n; j++){
-            for(int k = 0; k < n; k++){
-                    searchWord(j, k, n, arr, list, i);
-                }
-            }
-
-        }
-
-}
-
-
-void searchWord(int j, int k, int gridsize, char** arr, char** list, int listPos){
-    int wordlength = strlen(*(list+listPos));
-    if(j+wordlength <= gridsize){ //Horizontal
-        int i = 0;
-        while(i < wordlength && *(*(arr+(j+i))+k) == *(*(list+listPos)+i)){
-            i++;
-        }
-        if(i == wordlength){
-            while(i > 0 && *(*(arr+(j+i))+k) == *(*(list+listPos)+i)){
-            putchar(tolower(*(*(arr+(j+i))+k)));
-            i--;
-            }
-            for(i = 0; i < wordlength; i++)
-                printf("%c", *(*(list+listPos)+i));
-        }
-    }
-
-    if(k+wordlength <= gridsize){ //Vertical
-        int i = 0;
-        while(i < wordlength && *(*(arr+j)+(k+i)) == *(*(list+listPos)+i)){
-            i++;
-        }
-        if(i == wordlength){
-            while(i > 0 && *(*(arr+j)+(k+i)) == *(*(list+listPos)+i)){
-             putchar(tolower(*(*(arr+(j+i))+k)));
-            i--;
-            }
-            for(i = 0; i < wordlength; i++){
-                printf("%c", *(*(list+listPos)+i));
-            }
-        }
-    }
-
-    if(j+wordlength <= gridsize && k+wordlength <= gridsize){ //Diagonal
-        int i = 0;
-        while(i < wordlength && *(*(arr+(j+i))+k) == *(*(list+listPos)+i)){
-            i++;
-        }
-        if(i == wordlength){
-            while(i > 0 && *(*(arr+(j+i))+(k+i)) == *(*(list+listPos)+i)){
-             putchar(tolower(*(*(arr+(j+i))+(k+i))));
-            i--;
-            }
-            for(i = 0; i < wordlength; i++)
-                printf("%c", *(*(list+listPos)+i));
-        }
-    }
-
 
 }

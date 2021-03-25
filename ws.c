@@ -270,7 +270,6 @@ str+=32;
 return str;
 }
 
-
     void lowerCase(char** arr, int wordSize, int arrSize, int row, int col, int type){
       
        int i,j;
